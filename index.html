@@ -3,45 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Profesional</title>
+    <title>Calculadora Avanzada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="Style/style.css">
 </head>
 <body>
-    <div class="calculator-container">
+    <div class="container">
+        <h1>Calculadora Avanzada</h1>
         <div class="calculator">
-            <!-- Pantalla de la calculadora -->
-            <input type="text" id="display" class="display" disabled>
-
-            <!-- Botones de la calculadora -->
+            <input type="text" id="display" readonly>
             <div class="buttons">
-                <!-- Fila de botones funcionales -->
-                <button class="btn function" onclick="clearDisplay()">AC</button>
-                <button class="btn function" onclick="changeSign()">±</button>
-                <button class="btn function" onclick="appendOperator('%')">%</button>
-                <button class="btn operator" onclick="appendOperator('/')">÷</button>
-
-                <!-- Fila de números y operaciones -->
-                <button class="btn" onclick="appendNumber(7)">7</button>
-                <button class="btn" onclick="appendNumber(8)">8</button>
-                <button class="btn" onclick="appendNumber(9)">9</button>
-                <button class="btn operator" onclick="appendOperator('*')">×</button>
-
-                <!-- Otra fila de números y operaciones -->
-                <button class="btn" onclick="appendNumber(4)">4</button>
-                <button class="btn" onclick="appendNumber(5)">5</button>
-                <button class="btn" onclick="appendNumber(6)">6</button>
-                <button class="btn operator" onclick="appendOperator('-')">-</button>
-
-                <!-- Más números y operaciones -->
-                <button class="btn" onclick="appendNumber(1)">1</button>
-                <button class="btn" onclick="appendNumber(2)">2</button>
-                <button class="btn" onclick="appendNumber(3)">3</button>
-                <button class="btn operator" onclick="appendOperator('+')">+</button>
-
-                <!-- Última fila de números y funciones -->
-                <button class="btn large" onclick="appendNumber(0)">0</button>
-                <button class="btn" onclick="appendDot()">.</button>
-                <button class="btn operator" onclick="calculate()">=</button>
+                <button onclick="clearDisplay()"><i class="fas fa-backspace"></i></button>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button onclick="appendToDisplay('/')">/</button>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button onclick="appendToDisplay('*')">*</button>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button onclick="calculate()" class="equals">=</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="calculateSquareRoot()">√</button>
+                <button onclick="changeCalculator('currency')">Cambio de Moneda</button>
+                <button onclick="changeCalculator('imc')">IMC</button>
+            </div>
+        </div>
+        <div id="extraOptions" class="extra-options" style="display:none;">
+            <h2 id="calcTitle"></h2>
+            <div id="currencyOptions" class="options" style="display:none;">
+                <input type="number" id="currencyInput" placeholder="Cantidad en USD">
+                <button onclick="convertCurrency()">Convertir a EUR</button>
+                <p id="currencyResult"></p>
+            </div>
+            <div id="imcOptions" class="options" style="display:none;">
+                <input type="number" id="weightInput" placeholder="Peso (kg)">
+                <input type="number" id="heightInput" placeholder="Altura (m)">
+                <button onclick="calculateIMC()">Calcular IMC</button>
+                <p id="imcResult"></p>
             </div>
         </div>
     </div>

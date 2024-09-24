@@ -1,77 +1,71 @@
-/* Estilos generales del cuerpo */
 body {
-    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f9;
-    font-family: 'Arial', sans-serif;
+    margin: 0;
 }
 
-/* Contenedor de la calculadora */
-.calculator-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo del display */
-.display {
-    width: 100%;
-    padding: 20px;
-    background-color: #333;
-    color: #fff;
-    font-size: 2em;
-    border: none;
-    text-align: right;
+.container {
+    background: white;
     border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.calculator {
     margin-bottom: 20px;
 }
 
-/* Botones */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    gap: 5px;
 }
 
-.btn {
-    padding: 20px;
-    font-size: 1.5em;
-    border-radius: 10px;
+button {
+    padding: 15px;
+    font-size: 18px;
     border: none;
-    background-color: #f1f1f1;
-    color: #333;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-.btn:hover {
-    background-color: #ddd;
+button:hover {
+    background-color: #45a049;
 }
 
-/* Botones especiales */
-.btn.operator {
-    background-color: #ff9500;
-    color: #fff;
+.equals {
+    background-color: #008CBA;
 }
 
-.btn.operator:hover {
-    background-color: #e08e00;
+.extra-options {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
 }
 
-.btn.function {
-    background-color: #666;
-    color: #fff;
-}
-
-.btn.function:hover {
-    background-color: #555;
-}
-
-/* Botón grande para el número 0 */
-.large {
-    grid-column: span 2;
+.options {
+    margin-top: 10px;
 }
