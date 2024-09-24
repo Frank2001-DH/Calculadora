@@ -1,57 +1,61 @@
-let currentInput = '';
-let previousInput = '';
-let operation = null;
+// Inicializa el valor en la pantalla de la calculadora
+function clearDisplay() {
+    document.getElementById('display').value = '';
+}
 
+// Agrega un número al display
 function appendNumber(number) {
-    currentInput += number;
-    updateScreen();
+    document.getElementById('display').value += number;
 }
 
-function chooseOperation(op) {
-    if (currentInput === '') return;
-    if (previousInput !== '') {
-        calculateResult();
-    }
-    operation = op;
-    previousInput = currentInput;
-    currentInput = '';
+// Agrega un operador al display
+function appendOperator(operator) {
+    document.getElementById('display').value += operator;
 }
 
-function calculateResult() {
-    let result;
-    const prev = parseFloat(previousInput);
-    const curr = parseFloat(currentInput);
-    if (isNaN(prev) || isNaN(curr)) return;
+// Agrega un punto decimal
+function appendDot() {
+    let display = document.getElementById('display').value;
     
-    switch (operation) {
-        case '+':
-            result = prev + curr;
-            break;
-        case '-':
-            result = prev - curr;
-            break;
-        case '*':
-            result = prev * curr;
-            break;
-        case '/':
-            result = prev / curr;
-            break;
-        default:
-            return;
+    // Verifica que solo se pueda agregar un punto por número
+    if (!display.includes('.')) {
+        document.getElementById('display').value += '.';
     }
-    currentInput = result;
-    operation = null;
-    previousInput = '';
-    updateScreen();
 }
 
-function clearScreen() {
-    currentInput = '';
-    previousInput = '';
-    operation = null;
-    updateScreen();
+// Elimina el último carácter del display
+function deleteLast() {
+    let display = document.getElementById('display').value;
+    document.getElementById('display').value = display.slice(0, -1);
 }
 
-function updateScreen() {
-    document.getElementById('result').value = currentInput;
+// Calcula el resultado de la operación en el display
+function calculate() {
+    let display = document.getElementById('display').value;
+    
+    try {
+        let result = eval(display);
+        document.getElementById('display').value = result;
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
 }
+
+// Cambia el signo del número actual
+function changeSign() {
+    let display = document.getElementById('display').value;
+    
+    // Si el número es positivo, cámbialo a negativo, y viceversa
+    if (display) {
+        if (display.charAt(0) === '-') {
+            document.getElementById('display').value = display.slice(1);
+        } else {
+            document.getElementById('display').value = '-' + display;
+        }
+    }
+}
+
+// Inicializa la calculadora al cargar la página
+window.onload = function() {
+    clearDisplay();
+};
